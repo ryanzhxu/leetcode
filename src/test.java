@@ -27,16 +27,46 @@ public class test {
         return result;
     }
 
+    private static int lengthOfLastWord(String s) {
+        int n = s.length();
+
+        if (s.equals(" "))   return 0;
+        if (!s.contains(" "))   return n;
+
+        int i = n-1;
+
+        while (s.charAt(i) == ' ') {
+            if (i == 0) return 0;
+            i--;
+        }
+
+        int count=0;
+        while (i >= 0) {
+            if (s.charAt(i) == ' ') break;
+            count++;
+            i--;
+        }
+
+        return count;
+
+//        One line solution
+//        return s.trim().length()-s.trim().lastIndexOf(' ')-1
+    }
+
     private static void printArray(int[] arr) {
         for (int i: arr) {
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
         System.out.println("Hello World");
         int[] arr = {9, 9, 9, 9};
         printArray(plusOne(arr));
+        String s = "    Hello           World       ";
+        System.out.println(lengthOfLastWord(s));
+        System.out.println(s.trim().length()-s.trim().lastIndexOf(' ')-1);
     }
 
 }
